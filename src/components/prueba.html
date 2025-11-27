@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .padre {
+            background-color: aquamarine;
+            width: 70%;
+            height: 20vh;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+
+        }
+
+        .hijos {
+            background-color: white;
+            height: 50px;
+            width: 100px;
+        }
+
+        .ultimo {
+            background-color: brown;
+            /* position: absolute; */
+            right: 0;
+            flex-wrap: wrap;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="padre">
+        <div class="hijos"></div>
+        <div class="hijos"></div>
+        <div class="hijos"></div>
+        <div class="hijos"></div>
+        <div class="hijos"></div>
+        <div class="hijos"></div>
+        <div class="hijos ultimo"></div>
+    </div>
+</body>
+</html>

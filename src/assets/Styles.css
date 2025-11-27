@@ -1,0 +1,126 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    display: flex;
+    position: relative;
+}
+
+.modalBox {
+    position: absolute;
+}
+
+ /* Login  */
+
+.login-box {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(111, 238, 255);
+}
+
+/* Header */
+
+.header {
+    /* background-color: rgb(218, 196, 29); */
+    /* background-color: #fff; */
+    display: flex;
+    position: absolute!important;
+    top: 0;
+    width: 100vw;
+    height: 70px;
+    justify-content: center ;
+    align-items: center;
+}
+
+.logobox {
+    background-color: violet;
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
+}
+
+.header-boxbuttons {
+    background-color: #fff;
+    width: 100%;
+    border-radius: 16px;
+    justify-content: space-evenly;
+}
+
+.botones {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px!important;
+}
+
+/* Lista de productos */
+
+.lista-productos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50%;
+    overflow: auto;
+    /* ↓ CUIDADO CON ESTE PAR ↓ */
+    position: relative;  
+    top: 20vh;
+}
+
+.crudbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    position: relative;
+    top: 20vh;
+    gap: 5vh;
+}
+
+/* Home */
+
+.homeDiv {}
+
+.gallito {
+    width: 100vw;
+}
+
+
+/* Footer */
+
+.pieDePagina {
+    background-color: slategray;
+    display: flex;
+    position: relative;
+    bottom: 0;
+    height: 50vh;
+    width: 100vw;
+    justify-content: end;
+    align-items: end;
+}
+
+.derechosReservados {
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+    width: 30vw;
+}
+
+.derechosReservados, .p {
+    
+}
+
+.botones-carrito {
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+}
+
+.material-symbols-outlined {
+
+}
+
