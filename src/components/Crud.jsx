@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Form, Modal } from "react-bootstrap";
+import { Table, Button, Form, Modal, Pagination } from "react-bootstrap";
 
 
 const API_URL = "https://68489b9bec44b9f349416b0e.mockapi.io/api/productos";
 const Crud = () => {
     const [productos, setProductos] = useState([]);
+    // --- ESTADOS DE PAGINACIÓN ---
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+    // --- CÁLCULO DE PRODUCTOS POR PÁGINA ---
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = productos.slice(indexOfFirstItem, indexOfLastItem);
+
+    const totalPages = Math.ceil(productos.length / itemsPerPage);
+
     const getProductos = () => {
         fetch(API_URL)
             .then((res) => res.json())
@@ -89,50 +100,84 @@ const Crud = () => {
 
         <>
 
-            <div className="crudbox">
-                <h2>Productos</h2>
+            <div className="crudBackground">
 
-                <Button variant="primary" onClick={() => handleShow()}>
-                    Agregar
-                </Button>
 
-                <Table striped bordered hover size="sm">
-                    <thead>
-                        <tr>
-                            <th>Título</th>
-                            <th>Descripción</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Imagen</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {productos.map((prod) => (
+                <div className="crudbox">
 
-                            <tr key={prod.id}>
-                                <td>{prod.title}</td>
-                                <td>{prod.description}</td>
-                                <td>{prod.price}</td>
-                                <td>{prod.stock}</td>
-                                <td>{prod.image?.startsWith("http") ? (
-                                    <img
-                                        src={prod.image}
-                                        alt={prod.title}
-                                        width={50}
-                                        height={50}
-                                        style={{ objectFit: "cover" }} />
-                                ) : (
-                                    <span>{prod.image}</span>
-                                )}</td>
-                                <td>
-                                    <Button onClick={() => handleShow(prod)}>Editar</Button>
-                                    <Button onClick={() => eliminarProducto(prod.id)}>Eliminar</Button> </td>
-                            </tr>
+                    <h2>Productos</h2>
 
-                        ))}
-                    </tbody>
-                </Table>
+                    <Button variant="outline-light" onClick={() => handleShow()}>
+                        Agregar
+                    </Button>
+
+                    <div className="tablaCrud">
+                        <Table striped hover size="sm">
+                            <thead>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Imagen</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {currentItems.map((prod) => (
+
+
+                                    <tr key={prod.id}>
+                                        <td>{prod.title}</td>
+                                        <td>{prod.description}</td>
+                                        <td>{prod.price}</td>
+                                        <td>{prod.stock}</td>
+                                        <td>{prod.image?.startsWith("http") ? (
+                                            <img
+                                                src={prod.image}
+                                                alt={prod.title}
+                                                width={50}
+                                                height={50}
+                                                style={{ objectFit: "cover" }} />
+                                        ) : (
+                                            <span>{prod.image}</span>
+                                        )}</td>
+                                        <td>
+                                            <Button onClick={() => handleShow(prod)}>Editar</Button>
+                                            <Button onClick={() => eliminarProducto(prod.id)}>Eliminar</Button> </td>
+                                    </tr>
+
+                                ))}
+                            </tbody>
+                        </Table>
+                        <div className="paginator">
+                            <Pagination>
+
+                                <Pagination.Prev
+                                    disabled={currentPage === 1}
+                                    onClick={() => setCurrentPage(currentPage - 1)}
+                                />
+
+                                {[...Array(totalPages).keys()].map((number) => (
+                                    <Pagination.Item
+                                        key={number + 1}
+                                        active={currentPage === number + 1}
+                                        onClick={() => setCurrentPage(number + 1)}
+                                    >
+                                        {number + 1}
+                                    </Pagination.Item>
+                                ))}
+
+                                <Pagination.Next
+                                    disabled={currentPage === totalPages}
+                                    onClick={() => setCurrentPage(currentPage + 1)}
+                                />
+
+                            </Pagination>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
             <div className="modalBox">

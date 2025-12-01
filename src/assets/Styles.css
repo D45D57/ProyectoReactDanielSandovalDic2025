@@ -1,19 +1,25 @@
+/* ──────────────────────────────── */
+/* RESET GENERAL */
+/* ──────────────────────────────── */
 * {
-    padding: 0px;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    display: flex;
     position: relative;
+    background-color: midnightblue;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.modalBox {
-    position: absolute;
-}
 
- /* Login  */
 
+/* ──────────────────────────────── */
+/* LOGIN */
+/* ──────────────────────────────── */
 .login-box {
     display: flex;
     width: 100vw;
@@ -23,104 +29,278 @@ body {
     background-color: rgb(111, 238, 255);
 }
 
-/* Header */
 
+
+/* ──────────────────────────────── */
+/* HEADER */
+/* ──────────────────────────────── */
 .header {
-    /* background-color: rgb(218, 196, 29); */
-    /* background-color: #fff; */
-    display: flex;
-    position: absolute!important;
+    position: absolute !important;
     top: 0;
     width: 100vw;
     height: 70px;
-    justify-content: center ;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    z-index: 10;
 }
 
 .logobox {
-    background-color: violet;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
     height: 50px;
     width: 50px;
+    border-radius: 8px;
+}
+
+.logobox span {
+    color: white;
+    font-size: 24px;
 }
 
 .header-boxbuttons {
-    background-color: #fff;
     width: 100%;
+    background: linear-gradient(to bottom, rgb(255 255 255 / 20%), rgba(255,255,255,0));
     border-radius: 16px;
+    display: flex;
     justify-content: space-evenly;
 }
 
 .botones {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 24px!important;
+    font-size: 24px !important;
 }
 
-/* Lista de productos */
-
-.lista-productos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 50%;
-    overflow: auto;
-    /* ↓ CUIDADO CON ESTE PAR ↓ */
-    position: relative;  
-    top: 20vh;
+.botones span {
+    color: white;
+    pointer-events: auto;
 }
 
-.crudbox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    position: relative;
-    top: 20vh;
-    gap: 5vh;
+.botones span:hover {
+    color: tomato;
 }
 
-/* Home */
 
-.homeDiv {}
+
+/* ──────────────────────────────── */
+/* HOME */
+/* ──────────────────────────────── */
+.homeDiv {
+    height: 150vh;
+    background-color: rgb(22, 9, 27);
+}
 
 .gallito {
     width: 100vw;
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.big-letter-container {
+    position: absolute;
+    top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+}
+
+.bigLetterTienda,
+.bigLetterOfertas,
+.bigLetterLogin {
+    font-size: clamp(5rem, 15vw, 20vw);
+    width: 90vw;
+    line-height: 1;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    mix-blend-mode: color;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.bigLetterOfertas {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bigLetterTienda span,
+.bigLetterOfertas span,
+.bigLetterLogin span {
+    pointer-events: auto;
+}
+
+.bigLetterTienda:hover,
+.bigLetterOfertas:hover,
+.bigLetterLogin:hover {
+    mix-blend-mode: color-dodge;
 }
 
 
-/* Footer */
 
+/* ──────────────────────────────── */
+/* FOOTER */
+/* ──────────────────────────────── */
 .pieDePagina {
-    background-color: slategray;
-    display: flex;
-    position: relative;
-    bottom: 0;
-    height: 50vh;
+    background-color: black;
     width: 100vw;
+    height: 20vh;
+    display: flex;
     justify-content: end;
     align-items: end;
+    margin-top: auto;
 }
 
 .derechosReservados {
-    display: flex;
-    align-items: flex-end;
-    align-content: flex-end;
     width: 30vw;
 }
 
-.derechosReservados, .p {
-    
+.derechosReservados p {
+    margin-bottom: 0.5rem;
 }
 
+
+
+/* ──────────────────────────────── */
+/* CRUD - FONDO */
+/* ──────────────────────────────── */
+.crudBackground {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+
+    background-image: url("./src/assets/Gallito.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20vh;
+}
+
+/* Oscurecer fondo si quieres (opcional activar)
+.crudBackground::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 0;
+}
+*/
+
+
+/* ──────────────────────────────── */
+/* CRUD - CONTENIDO */
+/* ──────────────────────────────── */
+.crudbox {
+    position: relative;
+    z-index: 2;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+.crudbox h2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 64px;
+    color: white;
+}
+
+
+
+/* ──────────────────────────────── */
+/* TABLA CRUD */
+/* ──────────────────────────────── */
+.tablaCrud {
+    width: 80vw;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+}
+
+.tablaCrud table {
+    border-radius: 16px;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Quitar bordes feos de bootstrap */
+.table > :not(caption) > * > * {
+    border: none !important;
+}
+
+/* Centrado de celdas */
+.tablaCrud table td,
+.tablaCrud table th {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 10px;
+}
+
+
+/* ──────────────────────────────── */
+/* PAGINADOR */
+/* ──────────────────────────────── */
+.paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+
+
+/* ──────────────────────────────── */
+/* CARRITO */
+/* ──────────────────────────────── */
 .botones-carrito {
-    display: flex!important;
+    display: flex !important;
     justify-content: center;
     align-items: center;
 }
 
 .material-symbols-outlined {
-
+    color: white;
+    pointer-events: auto;
 }
 
+.material-symbols-outlined:hover {
+    color: tomato;
+}
+
+
+
+/* ──────────────────────────────── */
+/* MEDIA QUERIES */
+/* ──────────────────────────────── */
+@media (max-width: 360px) {
+
+    .logobox {
+        height: auto;
+        width: auto;
+    }
+
+    .header-boxbuttons {
+        width: 80vw;
+    }
+
+    .botones {
+        font-size: 14px !important;
+    }
+
+    .bigLetterTienda,
+    .bigLetterOfertas,
+    .bigLetterLogin {
+        font-size: 25vw;
+    }
+
+}

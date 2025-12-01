@@ -3,28 +3,24 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import Sidebar from "./Sidebar";
 
 function Header() {
     return (
-        <>
-
-            <Navbar className="header" >
-                <Container>
-                    <Navbar.Brand className="logobox" href="#home">Logo</Navbar.Brand>
-                    <Nav className="header-boxbuttons" >
-                        <Nav.Link className="botones" as={Link} to="/Home">Home</Nav.Link>
-                        <Nav.Link className="botones" as={Link} to="/login">Login</Nav.Link>
-                        <Nav.Link className="botones" href="#pricing">Ofertas</Nav.Link>
-                        <Nav.Link className="botones" as={Link} to="/Tienda">Tienda</Nav.Link>
-                        <Nav.Link className="botones-carrito" href="#pricing"><span class="material-symbols-outlined">
-                            shopping_cart
-                        </span>
-                        </Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
-
-        </>
+        <Navbar className="header" >
+            <Container>
+                <Navbar.Brand className="logobox" href="#home"><span>Kikiri</span><span>boo</span></Navbar.Brand>
+                <Nav className="header-boxbuttons" >
+                    <Nav.Link className="botones" as={Link} to="/"><span>Home</span></Nav.Link>
+                    <Nav.Link className="botones" as={Link} to="/login"><span>Login</span></Nav.Link>
+                    <Nav.Link className="botones" href="#ofertas"><span>Ofertas</span></Nav.Link>
+                    <Nav.Link className="botones" as={Link} to="/Tienda"><span>Tienda</span></Nav.Link>
+                    <Nav.Link className="botones-carrito" href="#sidebar">
+                        <Sidebar />
+                    </Nav.Link>
+                </Nav>
+            </Container>
+        </Navbar>
     );
 }
 export default Header;

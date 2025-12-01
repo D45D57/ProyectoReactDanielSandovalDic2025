@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product, agregarAlCarrito}) => {
 
     return (
         <Card style={{ width: '18rem' }}>
@@ -15,7 +15,9 @@ const ProductCard = ({product}) => {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary" onClick={() => agregarAlCarrito(product)}>
+          Agregar al carrito
+        </Button>
       </Card.Body>
     </Card>
   );

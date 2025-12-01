@@ -7,7 +7,10 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import Tienda from './components/Tienda';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { CartProvider } from './components/CartContext';
+import Carrito from './components/Carrito';
+import { AuthProvider } from './components/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
 
 import "./assets/Styles.css"
 import Crud from './components/Crud';
@@ -17,17 +20,21 @@ function App() {
   //const [count, setCount] = useState(0)
 
   return (
-
-      <Router>
-      <Header />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/crud" element={<Crud />} />
-        <Route path="/Tienda" element={<Tienda />} />
-      </Routes>
-      <Footer/>
-      </Router>
+      <AuthProvider>
+      <CartProvider>
+        <Router>
+        <Header />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/crud" element={<PrivateRoute><Crud /></PrivateRoute>} />
+          <Route path="/Tienda" element={<Tienda />} />
+          <Route path="/Carrito" element={<Carrito />} />
+        </Routes>
+        <Footer/>
+        </Router>
+      </CartProvider>
+      </AuthProvider>
       )
 }
 
