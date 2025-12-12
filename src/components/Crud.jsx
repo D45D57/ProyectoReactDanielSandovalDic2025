@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button, Form, Modal, Pagination } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 
-const API_URL = "https://68489b9bec44b9f349416b0e.mockapi.io/api/productos";
+const API_URL = "https://api.escuelajs.co/api/v1/products";
 const Crud = () => {
     const [productos, setProductos] = useState([]);
+    const [categorias, setCategorias] = useState([]);
     // --- ESTADOS DE PAGINACIÓN ---
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -19,12 +21,27 @@ const Crud = () => {
     const getProductos = () => {
         fetch(API_URL)
             .then((res) => res.json())
-            .then((data) => setProductos(data))
+            .then((data) => {
+                // Añadir stock simulado a cada producto
+                const productsWithStock = data.map(product => ({
+                    ...product,
+                    stock: Math.floor(Math.random() * 50) + 1
+                }));
+                setProductos(productsWithStock);
+            })
             .catch((error) => console.error("Error al obtener productos:", error));
+    };
+
+    const getCategorias = () => {
+        fetch("https://api.escuelajs.co/api/v1/categories")
+            .then((res) => res.json())
+            .then((data) => setCategorias(data))
+            .catch((error) => console.error("Error al obtener categorías:", error));
     };
 
     useEffect(() => {
         getProductos();
+        getCategorias();
     }, []);
 
     const eliminarProducto = (id) => {
@@ -42,7 +59,7 @@ const Crud = () => {
 
     const handleClose = () => {
         setShow(false);
-        setForm({ title: "", description: "", price: "", stock: "", image: "" });
+        setForm({ title: "", description: "", price: "", stock: "", categoryId: "", image: "" });
         setEditId(null);
     };
 
@@ -63,6 +80,7 @@ const Crud = () => {
         description: "",
         price: "",
         stock: "",
+        categoryId: "",
         image: "",
     });
 
@@ -74,8 +92,10 @@ const Crud = () => {
         const productData = {
             ...form,
             price: Number(form.price),
-            stock: Number(form.stock),
-        };
+            categoryId: Number(form.categoryId),
+            images: [form.image],
+        }
+
 
         const method = editId ? "PUT" : "POST";
         const url = editId ? `${API_URL}/${editId}` : API_URL;
@@ -92,8 +112,14 @@ const Crud = () => {
             .then(() => {
                 handleClose();
                 getProductos();
+                toast.success( editId? "Producto Editado" : "Producto Creado");
             })
             .catch((error) => console.error("Error:", error));
+    };
+
+    const handleDelete = (id) => {
+        eliminarProducto(id);
+        toast.success("Producto Eliminado!")
     };
 
     return (
@@ -132,9 +158,9 @@ const Crud = () => {
                                         <td>{prod.description}</td>
                                         <td>{prod.price}</td>
                                         <td>{prod.stock}</td>
-                                        <td>{prod.image?.startsWith("http") ? (
+                                        <td>{prod.category.image?.startsWith("https") ? (
                                             <img
-                                                src={prod.image}
+                                                src={prod.category.image}
                                                 alt={prod.title}
                                                 width={50}
                                                 height={50}
@@ -142,9 +168,10 @@ const Crud = () => {
                                         ) : (
                                             <span>{prod.image}</span>
                                         )}</td>
-                                        <td>
-                                            <Button onClick={() => handleShow(prod)}>Editar</Button>
-                                            <Button onClick={() => eliminarProducto(prod.id)}>Eliminar</Button> </td>
+                                        <td className="botones-agregar-eliminar">
+                                            <Button className="botones-agregar-eliminar" onClick={() => handleShow(prod)}>Editar</Button>
+                                            <Button className="botones-agregar-eliminar" onClick={() => handleDelete(prod.id)}>Eliminar</Button>
+                                        </td>
                                     </tr>
 
                                 ))}
@@ -211,6 +238,22 @@ const Crud = () => {
                                 <Form.Control type="Number" placeholder="" value={form.stock} onChange={e => setForm({ ...form, stock: e.target.value })} required />
                             </Form.Group>
 
+                            <Form.Group className="mb-3" controlId="formCategoria">
+                                <Form.Label>Categoría</Form.Label>
+                                <Form.Select
+                                    value={form.categoryId}
+                                    onChange={e => setForm({ ...form, categoryId: e.target.value })}
+                                    required
+                                >
+                                    <option value="">Selecciona una categoría</option>
+                                    {categorias.map((cat) => (
+                                        <option key={cat.id} value={cat.id}>
+                                            {cat.name}
+                                        </option>
+                                    ))}
+                                </Form.Select>
+                            </Form.Group>
+
                             <Form.Group className="mb-3" controlId="formImagen">
                                 <Form.Label>Imagen URL</Form.Label>
                                 <Form.Control type="Text" placeholder="" value={form.image} onChange={e => setForm({ ...form, image: e.target.value })} required />
@@ -235,5 +278,6 @@ const Crud = () => {
 
         </>
     )
-}
+};
+
 export default Crud;

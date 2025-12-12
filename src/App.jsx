@@ -1,6 +1,4 @@
 // import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import Header from './components/Header'
 import Home from './components/Home'
 import Footer from './components/Footer'
@@ -11,31 +9,45 @@ import { CartProvider } from './components/CartContext';
 import Carrito from './components/Carrito';
 import { AuthProvider } from './components/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
-
-import "./assets/Styles.css"
+import { ToastContainer } from 'react-toastify';
+import Ofertas from './components/Ofertas';
 import Crud from './components/Crud';
-// import './App.css'
+import "./assets/Styles.css"
+
+// ELIMINAMOS: import { useNavigation } ... y GlobalSpinner si no lo usas aquí
 
 function App() {
-  //const [count, setCount] = useState(0)
+  // ELIMINAMOS: const navigation = useNavigation();
+  // ELIMINAMOS: const isLoading = ...
 
   return (
-      <AuthProvider>
-      <CartProvider>
-        <Router>
-        <Header />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/crud" element={<PrivateRoute><Crud /></PrivateRoute>} />
-          <Route path="/Tienda" element={<Tienda />} />
-          <Route path="/Carrito" element={<Carrito />} />
-        </Routes>
-        <Footer/>
-        </Router>
-      </CartProvider>
-      </AuthProvider>
-      )
+      <div className='appTodo'>
+        <AuthProvider>
+        <CartProvider>
+          <Router>
+          <Header />
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/crud" element={<PrivateRoute><Crud /></PrivateRoute>} />
+            <Route path="/Tienda" element={<Tienda />} />
+            <Route path="/Carrito" element={<Carrito />} />
+            <Route path="/Ofertas" element={<Ofertas />} />
+          </Routes>
+          <Footer/>
+          </Router>
+        </CartProvider>
+        </AuthProvider>
+        
+        <ToastContainer
+              position="bottom-right"
+              autoClose={1000}
+        />
+        
+        {/* ELIMINAMOS <GlobalSpinner /> de aquí. 
+            El componente ProductList (dentro de Tienda) ya lo muestra por su cuenta */}
+      </div>
+  )
 }
 
 export default App

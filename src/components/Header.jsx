@@ -2,25 +2,30 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import HeaderNavbar from "./HeaderNavbar";
 
 function Header() {
+
+    const location = useLocation();
+    const isHome = location.pathname === "/";
+
     return (
-        <Navbar className="header" >
-            <Container>
-                <Navbar.Brand className="logobox" href="#home"><span>Kikiri</span><span>boo</span></Navbar.Brand>
-                <Nav className="header-boxbuttons" >
-                    <Nav.Link className="botones" as={Link} to="/"><span>Home</span></Nav.Link>
-                    <Nav.Link className="botones" as={Link} to="/login"><span>Login</span></Nav.Link>
-                    <Nav.Link className="botones" href="#ofertas"><span>Ofertas</span></Nav.Link>
-                    <Nav.Link className="botones" as={Link} to="/Tienda"><span>Tienda</span></Nav.Link>
-                    <Nav.Link className="botones-carrito" href="#sidebar">
-                        <Sidebar />
-                    </Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
+        <div style={{ backgroundColor: isHome ? 'transparent' : 'rgb(21, 9, 27)' }}className="headerEspacio">
+
+            <Navbar.Brand className="logobox" href="#home"><span>Kikiri</span><span>Boo</span>
+            </Navbar.Brand>
+
+            {!isHome && <HeaderNavbar />}
+
+            <Nav.Link className="botones-carrito" href="#sidebar">
+                <Sidebar />
+            </Nav.Link>
+
+
+            
+        </div>
     );
 }
 export default Header;

@@ -1,8 +1,8 @@
-import { useState, useContext} from 'react';
+import { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from 'react-router-dom';
-import {CartContext} from './CartContext';
+import { CartContext } from './CartContext';
 
 function Sidebar() {
     const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ function Sidebar() {
 
     return (
         <>
-            <Button variant="none" onClick={handleShow}>
+            <Button className='contCarritoIcon' variant="none" onClick={handleShow}>
                 <span className="material-symbols-outlined">
                     shopping_cart
                 </span>
@@ -21,8 +21,8 @@ function Sidebar() {
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Changuito</Offcanvas.Title>
                 </Offcanvas.Header>
-                <Offcanvas.Body>
-                    <Button as={Link} to="/Carrito">
+                <Offcanvas.Body className='sidebarCaja'>
+                    <Button variant={carrito.length === 0 ? "secondary && disabled" : "primary"} as={Link} to="/Carrito">
                         Carrito
                     </Button>
                     {carrito.length === 0 ? (
@@ -31,8 +31,8 @@ function Sidebar() {
                         <ul className='cart'>
                             {carrito.map((item) => (
                                 <li key={item.id} className="mb-2">
-                                    <img src={item.thumbnail} alt={item.title} style={{ width: '50px', marginRight: '10px' }} />
-                                    {item.title} -  {item.cantidad}
+                                    <img src={item.images} alt={"😫"} style={{ height: '5rem', width: '5rem', marginRight: '10px' }} />
+                                    {item.title.slice(0, 18)} -  {item.cantidad}
                                 </li>
                             ))}
                         </ul>

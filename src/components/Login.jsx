@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 const Login = () => {
-    const { login } = useAuth(); // ← CORREGIDO (minúscula)
+    const { login } = useAuth();
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const ok = login(user, pass); // ← AHORA SÍ USA EL CONTEXTO
+        const ok = login(user, pass); 
 
         if (ok) {
             navigate("/crud");
@@ -25,7 +25,7 @@ const Login = () => {
         <div className="login-box">
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Usuario</Form.Label>
+                    <Form.Label className="formLabel">Usuario</Form.Label>
                     <Form.Control
                         type="text"
                         value={user}
@@ -36,7 +36,7 @@ const Login = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Label className="formLabel">Contraseña</Form.Label>
                     <Form.Control
                         type="password"
                         placeholder="Ingrese contraseña"
