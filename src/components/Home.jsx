@@ -7,7 +7,7 @@ const Home = () => {
         <div className="homeDiv">
 
             <div>
-                <img className="gallito" src=".\src\assets\Gallito.jpg" alt="Fotico del Home" />
+                <img className="gallito" src="./src/assets/Gallito.jpg" alt="Fotico del Home" />
             </div>
             
             <div className="big-letter-container">
