@@ -55,6 +55,8 @@ html body {
 /* ──────────────────────────────── */
 /* HEADER */
 /* ──────────────────────────────── */
+
+
 .header {
     position: absolute !important;
     top: 0;
@@ -81,6 +83,8 @@ html body {
     z-index: 10;
     justify-content: space-between;
     background-color: none;
+    overflow-x: hidden;
+    padding: 0;
 
 
 }
@@ -163,6 +167,8 @@ html body {
     justify-content: center;
     align-items: center;
     margin-left: 5%;
+    overflow: hidden;
+    height: 80vh;
 }
 
 .bigLetterTienda,
@@ -207,7 +213,7 @@ html body {
 .contenedor-tienda {
     position: relative;
     width: 100%;
-    top: 10vh;  
+    top: 10vh;
 }
 
 .barraDeBusqueda {
@@ -266,7 +272,7 @@ html body {
 .mb-4 {
     display: flex !important;
     width: 50% !important;
-    margin-left: 50%;
+    /* margin-left: 50%; */
 }
 
 /* ──────────────────────────────── */
@@ -434,25 +440,153 @@ html body {
 
 
 
-@media (max-width: 360px) {
+@media (max-width: 811px) {
 
-    .logobox {
-        height: auto;
-        width: auto;
+.divGallito {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.gallito {
+    width: 110vw;
+}
+
+.logobox {
+    height: 30px;
+    width: 30px;
+    border-radius: 4px;
+    margin-left: 1rem;
+
+}
+
+.login-box {
+    background-size: cover;
+    background-position-y: 20%;
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    background-repeat: no-repeat;
+
+}
+
+.logobox span {
+    font-size: 1rem;
+}
+
+.header-boxbuttons {
+    width: 70vw;
+    overflow: hidden;
+}
+
+.header-boxbuttons span {
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.botones {
+    font-size: 14px !important;
+}
+
+.contCarritoIcon {
+    margin-right: 0px;
+    
+}
+
+.material-symbols-outlined {
+    font-size: 2rem;
+}
+
+.homeDiv {
+    height: 70vh;
+    overflow: hidden;
+}
+
+.big-letter-container {
+    top: 10vh;
+    overflow: hidden;
+    height: 60vh;
+    
+
+}
+
+.bigLetterTienda,
+.bigLetterOfertas,
+.bigLetterLogin {
+    font-size: 25vw;
+    line-height: 1;
+
+}
+
+.derechosReservados {
+    font-size: 10px;
+
+}
+
+.crudBackground {
+    padding-top: 12vh;
+}
+
+.crudbox {
+
+
+    gap: 3vh;
+}
+
+.crudbox h2 {
+    font-size: 24px !important;
+}
+
+.table table-sm table-striped table-hover {
+
+    width: 300px !important;
+
+}
+
+.tablaCrud {
+    font-size: 12px;
+}
+
+
+    .tablaCrud .table th, 
+    .tablaCrud .table td {
+        padding: 0.25rem !important;
+        vertical-align: middle;
     }
 
-    .header-boxbuttons {
-        width: 80vw;
+
+    .tablaCrud img {
+        width: 30px !important;
+        height: 30px !important;
     }
 
-    .botones {
-        font-size: 14px !important;
+    .tablaCrud .botones-agregar-eliminar button {
+        font-size: 10px;
+        padding: 2px 5px;
+        margin: 1px;
     }
+}
 
-    .bigLetterTienda,
-    .bigLetterOfertas,
-    .bigLetterLogin {
-        font-size: 25vw;
-    }
+
+@media (max-width: 480px) {
+
+.tablaCrud th:nth-child(2), 
+.tablaCrud td:nth-child(2) {
+        display: none;
+}
+
+.divGallito {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.gallito {
+    width: 200vw;
+}
+
+.big-letter-container {
+    height: 35vh;
+}
 
 }

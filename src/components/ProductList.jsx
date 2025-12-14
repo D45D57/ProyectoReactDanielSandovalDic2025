@@ -41,7 +41,7 @@ const ProductList = ({ categorySlug = null }) => {
     );
 
     return (
-        <div style={{marginTop: 100}}>
+        <div style={{marginTop: 90}}>
             <Container className="contenedor-tienda">
                 <div className="barraDeBusqueda">
                     <Form.Control
