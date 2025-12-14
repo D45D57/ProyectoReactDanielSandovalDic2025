@@ -7,11 +7,10 @@ const API_URL = "https://api.escuelajs.co/api/v1/products";
 const Crud = () => {
     const [productos, setProductos] = useState([]);
     const [categorias, setCategorias] = useState([]);
-    // --- ESTADOS DE PAGINACIÓN ---
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
 
-    // --- CÁLCULO DE PRODUCTOS POR PÁGINA ---
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = productos.slice(indexOfFirstItem, indexOfLastItem);
@@ -22,7 +21,7 @@ const Crud = () => {
         fetch(API_URL)
             .then((res) => res.json())
             .then((data) => {
-                // Añadir stock simulado a cada producto
+
                 const productsWithStock = data.map(product => ({
                     ...product,
                     stock: Math.floor(Math.random() * 50) + 1
@@ -215,7 +214,6 @@ const Crud = () => {
                     </Modal.Header>
                     <Modal.Body>
 
-                        {/*  Aqui los campos del formulario ↓ */}
 
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formTitulo">

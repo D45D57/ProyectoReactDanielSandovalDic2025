@@ -14,11 +14,8 @@ import Ofertas from './components/Ofertas';
 import Crud from './components/Crud';
 import "./assets/Styles.css"
 
-// ELIMINAMOS: import { useNavigation } ... y GlobalSpinner si no lo usas aquí
 
 function App() {
-  // ELIMINAMOS: const navigation = useNavigation();
-  // ELIMINAMOS: const isLoading = ...
 
   return (
       <div className='appTodo'>
@@ -44,8 +41,7 @@ function App() {
               autoClose={1000}
         />
         
-        {/* ELIMINAMOS <GlobalSpinner /> de aquí. 
-            El componente ProductList (dentro de Tienda) ya lo muestra por su cuenta */}
+
       </div>
   )
 }

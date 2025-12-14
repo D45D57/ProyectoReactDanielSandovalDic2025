@@ -1,45 +1,40 @@
-/* ──────────────────────────────── */
-/* RESET GENERAL */
-/* ──────────────────────────────── */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.spinner-overlay {
-  position: fixed;       /* Se fija a la pantalla, no importa el scroll */
-  top: 0;
-  left: 0;
-  width: 100vw;          /* Ancho total de la ventana */
-  height: 100vh;         /* Alto total de la ventana */
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo blanco semitransparente */
-  display: flex;         /* Usamos Flexbox para centrar */
-  justify-content: center; /* Centrado horizontal */
-  align-items: center;     /* Centrado vertical */
-  z-index: 9999;         /* Se asegura de estar encima del header y todo lo demás */
-  backdrop-filter: blur(2px); /* Opcional: difumina un poco el fondo */
+html body {
+    width: 100%;
+    overflow-x: hidden;
+    padding: 0;
 }
 
-/* ↓ esta clase appTodo esta en App.jsx */
+.spinner-overlay {
+  position: fixed;       
+  top: 0;
+  left: 0;
+  width: 100vw;          
+  height: 100vh;         
+  background-color: rgba(0, 0, 0, 0.8); 
+  display: flex;        
+  justify-content: center; 
+  align-items: center;     
+  z-index: 9999;        
+  backdrop-filter: blur(2px); 
+}
+
+/* ↓ esta clase appTodo esta en App.jsx 😫*/
 .appTodo {
     background-color: rgb(21, 9, 27);
 
 }
 
-/* body {
-    position: relative;
-    background-color: midnightblue;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-} */
-
-
 
 /* ──────────────────────────────── */
 /* LOGIN */
 /* ──────────────────────────────── */
+
 .login-box {
     display: flex;
     width: 100vw;
@@ -56,10 +51,6 @@
 .formLabel {
     color: white !important;
 }
-
-/* width: 100%;
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); */
 
 /* ──────────────────────────────── */
 /* HEADER */
@@ -127,7 +118,7 @@
 .header-boxbuttons {
     width: 70%;
     background-color: white;
-    border-radius: 16px;
+    border-radius: 26px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -151,10 +142,10 @@
 /* ──────────────────────────────── */
 /* HOME */
 /* ──────────────────────────────── */
+
 .homeDiv {
     height: 120vh;
     background-color: rgb(22, 9, 27);
-
 
 }
 
@@ -216,16 +207,14 @@
 .contenedor-tienda {
     position: relative;
     width: 100%;
-    top: 10vh;
+    top: 10vh;  
 }
 
 .barraDeBusqueda {
-    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
 }
 
-.contenedeorDeTarjetasTienda {
-
-}
 
 .cardButtonAgregar {
     display: flex;
@@ -242,11 +231,10 @@
     gap: 12px;
 }
 
-.cajaCard {
-    gap: 30px;
-}
 
-.coño {
+
+.cajaCard2 {
+    display: flex;
     justify-content: center !important;
 }
 
@@ -282,7 +270,7 @@
 }
 
 /* ──────────────────────────────── */
-/* CRUD - FONDO */
+/* CRUD FONDO */
 /* ──────────────────────────────── */
 .crudBackground {
     position: relative;
@@ -297,20 +285,13 @@
     padding-top: 20vh;
 }
 
-/* Oscurecer fondo si quieres (opcional activar)
-.crudBackground::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 0;
-}
-*/
+
 
 
 /* ──────────────────────────────── */
 /* CRUD - CONTENIDO */
 /* ──────────────────────────────── */
+
 .crudbox {
     position: relative;
     z-index: 2;
@@ -332,6 +313,7 @@
 /* ──────────────────────────────── */
 /* TABLA CRUD */
 /* ──────────────────────────────── */
+
 .tablaCrud {
     width: 80%;
     height: 80%;
@@ -384,7 +366,7 @@
 }
 
 .botones-agregar-eliminar {
-    gap: 30px;
+    margin: 10px;
 }
 
 .text-end {
@@ -392,12 +374,12 @@
     padding: 10px;
 }
 
-/* Quitar bordes feos de bootstrap */
+/* Quitar bordes feos de frankestein bootstrap */
 .table> :not(caption)>*>* {
     border: none !important;
 }
 
-/* Centrado de celdas */
+/* Centrado de celdas 🧟‍♂️*/
 .tablaCrud table td,
 .tablaCrud table th {
     text-align: center !important;
@@ -421,11 +403,7 @@
 /* ──────────────────────────────── */
 /* CARRITO */
 /* ──────────────────────────────── */
-/* .botones-carrito {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-} */
+
 
 .contCarritoIcon {
     display: flex;
@@ -453,6 +431,9 @@
 /* ──────────────────────────────── */
 /* MEDIA QUERIES */
 /* ──────────────────────────────── */
+
+
+
 @media (max-width: 360px) {
 
     .logobox {

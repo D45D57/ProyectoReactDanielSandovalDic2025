@@ -2,12 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import ProductCard from "./ProductCard";
 import CartContext from "./CartContext";
-// 1. IMPORTAMOS TU COMPONENTE
 import GlobalSpinner from "./GlobalSpinner"; 
 
 const ProductList = ({ categorySlug = null }) => {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true); // Mantenemos el estado local
+    const [loading, setLoading] = useState(true);
     const { agregarAlCarrito } = useContext(CartContext);
     const [barraDeBusqueda, setBarraDeBusqueda] = useState("");
 
@@ -30,14 +29,12 @@ const ProductList = ({ categorySlug = null }) => {
     }, [categorySlug]);
 
 
-    // 2. USAMOS TU COMPONENTE AQUÍ
-    // Si está cargando, mostramos tu GlobalSpinner y cortamos la ejecución (return)
+
     if (loading) {
         return <GlobalSpinner loading={loading} />;
     }
 
 
-    // El resto de tu código sigue igual...
     const filteredProducts = products.filter(products =>
         products.title.toLowerCase().includes(barraDeBusqueda.toLowerCase()) ||
         products.description.toLowerCase().includes(barraDeBusqueda.toLowerCase())
@@ -58,7 +55,7 @@ const ProductList = ({ categorySlug = null }) => {
                 <div className="contenedeorDeTarjetasTienda">
                     <Row className="cajaCard">
                         {filteredProducts.map((product) => (
-                            <Col className="coño" key={product.id}>
+                            <Col className="cajaCard2" key={product.id}>
                                 <ProductCard product={product} agregarAlCarrito={agregarAlCarrito} />
                             </Col>
                         ))}

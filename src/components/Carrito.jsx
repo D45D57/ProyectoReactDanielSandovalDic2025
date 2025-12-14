@@ -8,7 +8,7 @@ const Carrito = () => {
 
     const { carrito, setCarrito } = useContext(CartContext);
 
-    // PAGINACIÓN CORRECTA SOBRE CARRITO
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = carrito.slice(indexOfFirstItem, indexOfLastItem);

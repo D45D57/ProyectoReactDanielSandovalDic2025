@@ -11,15 +11,15 @@ const ProductCard = ({ product, agregarAlCarrito }) => {
   };
 
   return (
-    <Card style={{ width: '20rem'}}>
+    <Card style={{ width: '18rem', marginBottom: '20px'}}>
       <Card.Img
         variant="top"
         src={product.category.image}
         style={{ 
           height: '300px', 
-          //objectFit: 'contain', // ajusta sin recortar
+
           objectFit: 'cover', 
-          objectPosition: 'center', // centra la imagen
+          objectPosition: 'center',
         }}
       />
       <Card.Body>
